@@ -1,0 +1,17 @@
+[template]
+name = "mlir-dialect-template"
+description = "A template for an MLIR dialect with Rust bindings"
+version = "0.1.0"
+authors = ["Jared Hoberock <jaredhoberock@gmail.com>"]
+
+[template.variables]
+authors = { type = "string", prompt = "Author(s)", default = "Your Name <you@example.com>" }
+dialect_name = { type = "string", prompt = "Name of your dialect", default = "foo" }
+mlir_install_dir = { type = "string", prompt = "Install directory of MLIR", default = "$(HOME)/dev/git/llvm-project-20/install" }
+
+# derived forms
+uppercase_dialect_name = { type = "string", auto-define = "{{ dialect_name | upper }}"
+pascal_case_dialect_name = { 
+  type = "string", 
+  auto-define = "{{ dialect_name | titlecase | replace(from=\"_\", to=\"\") }}" 
+}

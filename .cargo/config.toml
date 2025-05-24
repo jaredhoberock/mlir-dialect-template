@@ -1,0 +1,9 @@
+[env]
+MLIR_SYS_200_PREFIX = "{{mlir_install_dir}}"
+TABLEGEN_200_PREFIX = "{{mlir_install_dir}}"
+
+[build]
+rustflags = [
+  # this allows cargo test to find our debug build of the MLIR shared library
+  "-C", "link-arg=-Wl,-rpath,{{mlir_install_dir}}/lib",
+]
