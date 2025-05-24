@@ -4,9 +4,9 @@
 
 #include "Dialect.cpp.inc"
 
-namespace mlir::{{dialect_name}} {
+namespace mlir::{{ dialect_name }} {
 
-void StrDialect::initialize() {
+void {{ dialect_name | pascal_case }}Dialect::initialize() {
   addOperations<
 #define GET_OP_LIST
 #include "Ops.cpp.inc"

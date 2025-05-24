@@ -1,12 +1,12 @@
-#ifndef {{uppercase_dialect_name}}_DIALECT_TD
-#define {{uppercase_dialect_name}}_DIALECT_TD
+#ifndef {{ dialect_name | shouty_snake_case }}_DIALECT_TD
+#define {{ dialect_name | shouty_snake_case }}_DIALECT_TD
 
 include "mlir/IR/OpBase.td"
 
-def {{pascal_case_dialect_name}}Dialect : Dialect {
-  let name = "{{dialect_name}}";
-  let summary = "Dialect summary here";
-  let cppNamespace = "::mlir::{{dialect_name}}";
+def {{ dialect_name | pascal_case }}Dialect : Dialect {
+  let name = "{{ dialect_name }}";
+  let summary = "{{ dialect_name | title_case }} dialect.";
+  let cppNamespace = "::mlir::{{ dialect_name }}";
 
   let useDefaultTypePrinterParser = 1;
 
@@ -15,8 +15,7 @@ def {{pascal_case_dialect_name}}Dialect : Dialect {
   }];
 }
 
-class {{pascal_case_dialect_name}}DialectOp<string mnemonic, list<Trait> traits = []> :
-  Op<TraitDialect, mnemonic, traits>;
+class {{ dialect_name | pascal_case }}DialectOp<string mnemonic, list<Trait> traits = []> :
+  Op<{{ dialect_name | pascal_case }}Dialect, mnemonic, traits>;
 
-#endif // {{uppercase_dialect_name}}_DIALECT_TD
-
+#endif // {{ dialect_name | shouty_snake_case }}_DIALECT_TD
