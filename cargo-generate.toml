@@ -1,10 +1,10 @@
 [template]
 name = "mlir-dialect-template"
-description = "A template for an MLIR dialect with Rust bindings"
+description = "A template for an MLIR dialect with C and Rust bindings"
 version = "0.1.0"
 authors = ["Jared Hoberock <jaredhoberock@gmail.com>"]
-ignore = ["README.md"]
+ignore = [".git", "README.md"]
 
 [placeholders]
 dialect_name = { type = "string", prompt = "Name of your dialect", default = "foo" }
-mlir_install_dir = { type = "string", prompt = "Install directory of MLIR", default = "$(HOME)/dev/git/llvm-project-20/install" }
+mlir_install_dir = { type = "string", prompt = "Install directory of MLIR" }

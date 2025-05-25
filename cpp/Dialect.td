@@ -8,8 +8,6 @@ def {{ dialect_name | pascal_case }}Dialect : Dialect {
   let summary = "{{ dialect_name | title_case }} dialect.";
   let cppNamespace = "::mlir::{{ dialect_name }}";
 
-  let useDefaultTypePrinterParser = 1;
-
   let extraClassDeclaration = [{
     void registerTypes();
   }];
