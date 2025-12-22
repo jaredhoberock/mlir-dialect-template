@@ -53,7 +53,7 @@ lib{{dialect_name}}_dialect.a: $(DIALECT_OBJECTS)
 PLUGIN_OBJECTS := $(DIALECT_OBJECTS) Plugin.o
 
 lib{{dialect_name}}_dialect.so: $(PLUGIN_OBJECTS)
-	$(CXX) -shared -undefined dynamic_lookup $^ -o $@
+	$(CXX) -shared $^ -o $@
 
 .PHONY: test
 test: lib{{dialect_name}}_dialect.so
