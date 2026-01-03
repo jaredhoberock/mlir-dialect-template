@@ -1,7 +1,7 @@
 #include "c_api.h"
-#include "{{pascal_case_dialect_name}}.hpp"
-#include "{{pascal_case_dialect_name}}Ops.hpp"
-#include "{{pascal_case_dialect_name}}Types.hpp"
+#include "{{dialect_name | pascal_case}}.hpp"
+#include "{{dialect_name | pascal_case}}Ops.hpp"
+#include "{{dialect_name | pascal_case}}Types.hpp"
 #include <mlir/CAPI/IR.h>
 #include <mlir/CAPI/Pass.h>
 #include <mlir/IR/Builders.h>

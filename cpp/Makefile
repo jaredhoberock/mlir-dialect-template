@@ -14,33 +14,33 @@ MLIR_INCLUDE = {{mlir_install_dir}}/include
 INCLUDES := -I $(MLIR_INCLUDE)
 
 # Dialect library sources
-DIALECT_SOURCES := c_api.cpp {{pascal_case_dialect_name}}.cpp {{pascal_case_dialect_name}}Ops.cpp {{pascal_case_dialect_name}}Types.cpp
+DIALECT_SOURCES := c_api.cpp {{dialect_name | pascal_case}}.cpp {{dialect_name | pascal_case}}Ops.cpp {{dialect_name | pascal_case}}Types.cpp
 DIALECT_OBJECTS := $(DIALECT_SOURCES:.cpp=.o)
 
 # Generated files
-GENERATED := {{pascal_case_dialect_name}}.hpp.inc {{pascal_case_dialect_name}}.cpp.inc {{pascal_case_dialect_name}}Ops.hpp.inc {{pascal_case_dialect_name}}Ops.cpp.inc {{pascal_case_dialect_name}}Types.hpp.inc {{pascal_case_dialect_name}}Types.cpp.inc
+GENERATED := {{dialect_name | pascal_case}}.hpp.inc {{dialect_name | pascal_case}}.cpp.inc {{dialect_name | pascal_case}}Ops.hpp.inc {{dialect_name | pascal_case}}Ops.cpp.inc {{dialect_name | pascal_case}}Types.hpp.inc {{dialect_name | pascal_case}}Types.cpp.inc
 
 .PHONY: all clean
 
 all: lib{{dialect_name}}_dialect.a lib{{dialect_name}}_dialect.so
 
 # TableGen rules
-{{pascal_case_dialect_name}}.hpp.inc: {{pascal_case_dialect_name}}.td
+{{dialect_name | pascal_case}}.hpp.inc: {{dialect_name | pascal_case}}.td
 	$(TBLGEN) --gen-dialect-decls $(INCLUDES) $< -o $@
 
-{{pascal_case_dialect_name}}.cpp.inc: {{pascal_case_dialect_name}}.td
+{{dialect_name | pascal_case}}.cpp.inc: {{dialect_name | pascal_case}}.td
 	$(TBLGEN) --gen-dialect-defs $(INCLUDES) $< -o $@
 
-{{pascal_case_dialect_name}}Ops.hpp.inc: {{pascal_case_dialect_name}}Ops.td
+{{dialect_name | pascal_case}}Ops.hpp.inc: {{dialect_name | pascal_case}}Ops.td
 	$(TBLGEN) --gen-op-decls $(INCLUDES) $< -o $@
 
-{{pascal_case_dialect_name}}Ops.cpp.inc: {{pascal_case_dialect_name}}Ops.td
+{{dialect_name | pascal_case}}Ops.cpp.inc: {{dialect_name | pascal_case}}Ops.td
 	$(TBLGEN) --gen-op-defs $(INCLUDES) $< -o $@
 
-{{pascal_case_dialect_name}}Types.hpp.inc: {{pascal_case_dialect_name}}Types.td
+{{dialect_name | pascal_case}}Types.hpp.inc: {{dialect_name | pascal_case}}Types.td
 	$(TBLGEN) --gen-typedef-decls $(INCLUDES) $< -o $@
 
-{{pascal_case_dialect_name}}Types.cpp.inc: {{pascal_case_dialect_name}}Types.td
+{{dialect_name | pascal_case}}Types.cpp.inc: {{dialect_name | pascal_case}}Types.td
 	$(TBLGEN) --gen-typedef-defs $(INCLUDES) $< -o $@
 
 # Object file rules

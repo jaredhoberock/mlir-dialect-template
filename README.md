@@ -15,7 +15,6 @@ Create a new dialect project:
 cargo generate \
   --git https://github.com/jaredhoberock/mlir-dialect-template \
   --define dialect_name=<name> \
-  --define pascal_case_dialect_name=<Name> \
   --define mlir_install_dir=/path/to/mlir/install
 ```
 

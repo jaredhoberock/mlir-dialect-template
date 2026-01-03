@@ -3,4 +3,4 @@
 #include "mlir/IR/Dialect.h"
 #include "mlir/IR/BuiltinOps.h"
 #include "mlir/IR/OpDefinition.h"
-#include "{{pascal_case_dialect_name}}.hpp.inc"
+#include "{{dialect_name | pascal_case}}.hpp.inc"
