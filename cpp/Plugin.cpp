@@ -1,4 +1,4 @@
-#include "Dialect.hpp"
+#include "{{pascal_case_dialect_name}}.hpp"
 #include <mlir/Tools/Plugins/DialectPlugin.h>
 
 static void registerPlugin(mlir::DialectRegistry* registry) {

@@ -14,33 +14,33 @@ MLIR_INCLUDE = {{mlir_install_dir}}/include
 INCLUDES := -I $(MLIR_INCLUDE)
 
 # Dialect library sources
-DIALECT_SOURCES := c_api.cpp Dialect.cpp Ops.cpp Types.cpp
+DIALECT_SOURCES := c_api.cpp {{pascal_case_dialect_name}}.cpp {{pascal_case_dialect_name}}Ops.cpp {{pascal_case_dialect_name}}Types.cpp
 DIALECT_OBJECTS := $(DIALECT_SOURCES:.cpp=.o)
 
 # Generated files
-GENERATED := Dialect.hpp.inc Dialect.cpp.inc Ops.hpp.inc Ops.cpp.inc Types.hpp.inc Types.cpp.inc
+GENERATED := {{pascal_case_dialect_name}}.hpp.inc {{pascal_case_dialect_name}}.cpp.inc {{pascal_case_dialect_name}}Ops.hpp.inc {{pascal_case_dialect_name}}Ops.cpp.inc {{pascal_case_dialect_name}}Types.hpp.inc {{pascal_case_dialect_name}}Types.cpp.inc
 
 .PHONY: all clean
 
 all: lib{{dialect_name}}_dialect.a lib{{dialect_name}}_dialect.so
 
 # TableGen rules
-Dialect.hpp.inc: Dialect.td
+{{pascal_case_dialect_name}}.hpp.inc: {{pascal_case_dialect_name}}.td
 	$(TBLGEN) --gen-dialect-decls $(INCLUDES) $< -o $@
 
-Dialect.cpp.inc: Dialect.td
+{{pascal_case_dialect_name}}.cpp.inc: {{pascal_case_dialect_name}}.td
 	$(TBLGEN) --gen-dialect-defs $(INCLUDES) $< -o $@
 
-Ops.hpp.inc: Ops.td
+{{pascal_case_dialect_name}}Ops.hpp.inc: {{pascal_case_dialect_name}}Ops.td
 	$(TBLGEN) --gen-op-decls $(INCLUDES) $< -o $@
 
-Ops.cpp.inc: Ops.td
+{{pascal_case_dialect_name}}Ops.cpp.inc: {{pascal_case_dialect_name}}Ops.td
 	$(TBLGEN) --gen-op-defs $(INCLUDES) $< -o $@
 
-Types.hpp.inc: Types.td
+{{pascal_case_dialect_name}}Types.hpp.inc: {{pascal_case_dialect_name}}Types.td
 	$(TBLGEN) --gen-typedef-decls $(INCLUDES) $< -o $@
 
-Types.cpp.inc: Types.td
+{{pascal_case_dialect_name}}Types.cpp.inc: {{pascal_case_dialect_name}}Types.td
 	$(TBLGEN) --gen-typedef-defs $(INCLUDES) $< -o $@
 
 # Object file rules
